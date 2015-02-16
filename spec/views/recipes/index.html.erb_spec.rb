@@ -9,7 +9,7 @@ RSpec.describe "recipes/index", type: :view do
         :cooking_time => 2,
         :difficulty => "Difficulty",
         :ingredients => "MyText",
-        :procedure => "MyText"
+        :procedure => "MyProcedure"
       ),
       Recipe.create!(
         :name => "Name",
@@ -17,7 +17,7 @@ RSpec.describe "recipes/index", type: :view do
         :cooking_time => 2,
         :difficulty => "Difficulty",
         :ingredients => "MyText",
-        :procedure => "MyText"
+        :procedure => "MyProcedure"
       )
     ])
   end
@@ -29,6 +29,6 @@ RSpec.describe "recipes/index", type: :view do
     assert_select "tr>td", :text => 2.to_s, :count => 2
     assert_select "tr>td", :text => "Difficulty".to_s, :count => 2
     assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
+    assert_select "tr>td", :text => "MyProcedure".to_s, :count => 2
   end
 end
