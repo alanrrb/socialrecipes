@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216020412) do
+ActiveRecord::Schema.define(version: 20150216154803) do
 
   create_table "cuisines", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -43,6 +43,10 @@ ActiveRecord::Schema.define(version: 20150216020412) do
     t.integer  "food_type_id",       limit: 4
     t.integer  "food_preference_id", limit: 4
     t.integer  "cuisine_id",         limit: 4
+    t.string   "photo_file_name",    limit: 255
+    t.string   "photo_content_type", limit: 255
+    t.integer  "photo_file_size",    limit: 4
+    t.datetime "photo_updated_at"
   end
 
   add_index "recipes", ["cuisine_id"], name: "index_recipes_on_cuisine_id", using: :btree
