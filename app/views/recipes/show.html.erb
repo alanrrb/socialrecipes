@@ -16,6 +16,21 @@
 </p>
 
 <p>
+  <strong>Cuisine:</strong>
+  <%= @recipe.cuisine.name %>
+</p>
+
+<p>
+  <strong>Food Preference:</strong>
+  <%= @recipe.food_preference.name %>
+</p>
+
+<p>
+  <strong>Food Type:</strong>
+  <%= @recipe.food_type.name %>
+</p>
+
+<p>
   <strong>Difficulty:</strong>
   <%= @recipe.difficulty %>
 </p>
@@ -30,5 +45,9 @@
   <%= @recipe.procedure %>
 </p>
 
+<p>
+  <strong>Foto:</strong>
+  <%= image_tag @recipe.photo.url(:thumb) %>
+</p>
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>
