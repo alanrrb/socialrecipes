@@ -20,6 +20,18 @@
     <%= f.number_field :serves %>
   </div>
   <div class="field">
+    <%= f.label :food_preference %><br>
+    <%= f.collection_select(:food_preference_id, FoodPreference.all, :id, :name, prompt: "Selecione") %>
+  </div>
+  <div class="field">
+    <%= f.label :food_type %><br>
+    <%= f.collection_select(:food_type_id, FoodType.all, :id, :name, prompt: "Selecione") %>
+  </div>
+  <div class="field">
+    <%= f.label :cuisine %><br>
+    <%= f.collection_select(:cuisine_id, Cuisine.all, :id, :name, prompt: "Selecione") %>
+  </div>
+  <div class="field">
     <%= f.label :cooking_time %><br>
     <%= f.number_field :cooking_time %>
   </div>
