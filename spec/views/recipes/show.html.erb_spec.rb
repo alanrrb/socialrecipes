@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.describe "recipes/show", type: :view do
   before(:each) do
     @recipe = assign(:recipe, Recipe.create!(
+      :cuisine => Cuisine.create!(name: "cuisine"),
+      :food_type => FoodType.create!(name: "food_type"),
+      :food_preference => FoodPreference.create!(name: "food_preference"),
       :name => "Name",
       :serves => 1,
       :cooking_time => 2,

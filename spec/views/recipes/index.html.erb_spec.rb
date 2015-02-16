@@ -4,6 +4,9 @@ RSpec.describe "recipes/index", type: :view do
   before(:each) do
     assign(:recipes, [
       Recipe.create!(
+        :cuisine => Cuisine.create!(name: "cuisine"),
+        :food_type => FoodType.create!(name: "food_type"),
+        :food_preference => FoodPreference.create!(name: "food_preference"),
         :name => "Name",
         :serves => 1,
         :cooking_time => 2,
@@ -12,6 +15,9 @@ RSpec.describe "recipes/index", type: :view do
         :procedure => "MyProcedure"
       ),
       Recipe.create!(
+        :cuisine => Cuisine.create!(name: "cuisine"),
+        :food_type => FoodType.create!(name: "food_type"),
+        :food_preference => FoodPreference.create!(name: "food_preference"),
         :name => "Name",
         :serves => 1,
         :cooking_time => 2,
