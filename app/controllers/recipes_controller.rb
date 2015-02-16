@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   # GET /recipes
@@ -52,9 +53,9 @@ class RecipesController < ApplicationController
   end
 
   def set_relationship
-    @recipe.cuisine = Cuisine.find(recipe_params[:cuisine_id])
-    @recipe.food_type = FoodType.find(recipe_params[:food_type_id])
-    @recipe.food_preference = FoodPreference.find(recipe_params[:food_preference_id])
+    @recipe.cuisine = Cuisine.find(recipe_params[:cuisine_id]) if recipe_params[:cuisine_id]
+    @recipe.food_type = FoodType.find(recipe_params[:food_type_id]) if recipe_params[:food_type_id]
+    @recipe.food_preference = FoodPreference.find(recipe_params[:food_preference_id]) if recipe_params[:food_preference_id]
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

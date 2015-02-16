@@ -17,18 +17,29 @@ require 'rails_helper'
 # is no simpler way to get a handle on the object needed for the example.
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
-
 RSpec.describe RecipesController, type: :controller do
-
+  login_user
   # This should return the minimal set of attributes required to create a valid
   # Recipe. As you add validations to Recipe, be sure to
   # adjust the attributes here as well.
+  let(:cuisine) {FactoryGirl.create(:cuisine)}
+  let(:food_type) {FactoryGirl.create(:food_type)}
+  let(:food_preference) {FactoryGirl.create(:food_preference)}
+
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {ingredients: "ingredients", procedure: "procedure",
+     cuisine: cuisine,
+     cuisine_id: cuisine.id,
+     food_type: food_type,
+     food_type_id: food_type.id,
+     food_preference: food_preference,
+     food_preference_id: food_preference.id,
+     name: "recipe name"}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {difficulty: "hard",
+     name: ""}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +114,14 @@ RSpec.describe RecipesController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {name: "New name"}
       }
 
       it "updates the requested recipe" do
         recipe = Recipe.create! valid_attributes
         put :update, {:id => recipe.to_param, :recipe => new_attributes}, valid_session
         recipe.reload
-        skip("Add assertions for updated state")
+        expect(assigns(:recipe).name).to eq(recipe.name)
       end
 
       it "assigns the requested recipe as @recipe" do
@@ -135,7 +146,7 @@ RSpec.describe RecipesController, type: :controller do
 
       it "re-renders the 'edit' template" do
         recipe = Recipe.create! valid_attributes
-        put :update, {:id => recipe.to_param, :recipe => invalid_attributes}, valid_session
+        put :update, {:id => recipe.id, :recipe => invalid_attributes}, valid_session
         expect(response).to render_template("edit")
       end
     end
