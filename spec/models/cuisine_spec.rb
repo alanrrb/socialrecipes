@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Cuisine, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should validates presence of name" do
+    c = Cuisine.new
+    expect(c).to_not be_valid
+    c.name = "Japonese"
+    expect(c).to be_valid
+  end
 end
