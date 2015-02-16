@@ -2,13 +2,11 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   # GET /recipes
-  # GET /recipes.json
   def index
     @recipes = Recipe.all
   end
 
   # GET /recipes/1
-  # GET /recipes/1.json
   def show
   end
 
@@ -22,56 +20,45 @@ class RecipesController < ApplicationController
   end
 
   # POST /recipes
-  # POST /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.cuisine = Cuisine.find(recipe_params[:cuisine_id])
-    @recipe.food_type = FoodType.find(recipe_params[:food_type_id])
-    @recipe.food_preference = FoodPreference.find(recipe_params[:food_preference_id])
-
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
-        format.json { render :show, status: :created, location: @recipe }
-      else
-        format.html { render :new }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
+    set_relationship
+    if @recipe.save
+      redirect_to @recipe, notice: 'Recipe was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /recipes/1
-  # PATCH/PUT /recipes/1.json
   def update
-    respond_to do |format|
-      if @recipe.update(recipe_params)
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
-        format.json { render :show, status: :ok, location: @recipe }
-      else
-        format.html { render :edit }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
+    if @recipe.update(recipe_params)
+      redirect_to @recipe, notice: 'Recipe was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /recipes/1
-  # DELETE /recipes/1.json
   def destroy
     @recipe.destroy
-    respond_to do |format|
-      format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to recipes_url, notice: 'Recipe was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_recipe
-      @recipe = Recipe.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def recipe_params
-      params.require(:recipe).permit(:name, :serves, :cooking_time, :difficulty, :ingredients, :procedure, :food_preference_id, :food_type_id, :cuisine_id, :photo)
-    end
+  def set_relationship
+    @recipe.cuisine = Cuisine.find(recipe_params[:cuisine_id])
+    @recipe.food_type = FoodType.find(recipe_params[:food_type_id])
+    @recipe.food_preference = FoodPreference.find(recipe_params[:food_preference_id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def recipe_params
+    params.require(:recipe).permit(:name, :serves, :cooking_time, :difficulty, :ingredients, :procedure, :food_preference_id, :food_type_id, :cuisine_id, :photo)
+  end
 end
