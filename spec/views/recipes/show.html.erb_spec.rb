@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "recipes/show", type: :view do
+  login_user
   before(:each) do
     @recipe = assign(:recipe, Recipe.create!(
       :cuisine => Cuisine.create!(name: "cuisine"),
