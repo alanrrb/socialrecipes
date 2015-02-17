@@ -1,38 +1,36 @@
-<div class="row">
-  <div class="panel panel-info">
-    <div class="panel-heading">Food Types</div>
-    <div class="panel-body">
-      <% @food_types.each do |ft| %>
-        <p>
-        <%= link_to "/recipes/food_type/#{ft.id}" do %>
-          <%= ft.name %>
-        <% end %>
-        </p>
-    <% end %>
-    </div>
+<div class="panel panel-info">
+  <div class="panel-heading">Food Types</div>
+  <div class="panel-body">
+    <% @food_types.each do |ft| %>
+      <p>
+    <%= link_to "/recipes/food_type/#{ft.id}" do %>
+      <%= ft.name %>
+  <% end %>
+    </p>
+  <% end %>
   </div>
-  <div class="panel panel-info">
-    <div class="panel-heading">Food Preferences</div>
-    <div class="panel-body">
-      <% @food_preferences.each do |fp| %>
-        <p>
-        <%= link_to "/recipes/food_preference/#{fp.id}" do %>
-          <%= fp.name %>
-        <% end %>
-        </p>
-    <% end %>
-    </div>
+</div>
+<div class="panel panel-info">
+  <div class="panel-heading">Food Preferences</div>
+  <div class="panel-body">
+    <% @food_preferences.each do |fp| %>
+      <p>
+    <%= link_to "/recipes/food_preference/#{fp.id}" do %>
+      <%= fp.name %>
+  <% end %>
+    </p>
+  <% end %>
   </div>
-  <div class="panel panel-info">
-    <div class="panel-heading">Cuisines</div>
-    <div class="panel-body">
-      <% @cuisines.each do |c| %>
-        <p>
-        <%= link_to "/recipes/cuisine/#{c.id}" do %>
-          <%= c.name %>
-        <% end %>
-        </p>
-    <% end %>
-    </div>
+</div>
+<div class="panel panel-info">
+  <div class="panel-heading">Cuisines</div>
+  <div class="panel-body">
+    <% @cuisines.each do |c| %>
+      <p>
+    <%= link_to "/recipes/cuisine/#{c.id}" do %>
+      <%= c.name %>
+  <% end %>
+    </p>
+  <% end %>
   </div>
 </div>

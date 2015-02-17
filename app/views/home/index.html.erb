@@ -1,15 +1,2 @@
 <h2>Last Recipes</h2>
-
-<% @recipes.each do |recipe| %>
-<%= image_tag recipe.photo.url(:thumb), class: "image-responsive" %>
-<h3><%= link_to recipe.name, recipe%></h3>
-<p>
-<strong>Cooking Time: </strong><%= recipe.cooking_time %>
-<strong>Serves: </strong><%= recipe.serves %>
-</p>
-<p>
-<strong>Food Type: </strong><%= recipe.food_type.name %>
-<strong>Food Preference: </strong><%= recipe.food_preference.name %>
-<strong>Cuisine: </strong><%= recipe.cuisine.name %>
-</p>
-<% end %>
+<%= render partial: "shared/recipes", locals: {recipes: @recipes} %>
