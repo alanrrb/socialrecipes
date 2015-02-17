@@ -10,22 +10,26 @@
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 #
 default: &default
+
+development:
   adapter: mysql2
   encoding: utf8
   pool: 5
   username: root
   password:
   socket: /var/run/mysqld/mysqld.sock
-
-development:
-  <<: *default
   database: socialrecipes_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+  socket: /var/run/mysqld/mysqld.sock
   database: socialrecipes_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
@@ -48,7 +52,11 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: socialrecipes_production
-  username: socialrecipes
-  password: <%= ENV['SOCIALRECIPES_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+  #database: socialrecipes_production
+  #username: socialrecipes
+  #password: <%= ENV['SOCIALRECIPES_DATABASE_PASSWORD'] %>
