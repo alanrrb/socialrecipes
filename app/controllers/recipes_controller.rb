@@ -7,6 +7,13 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
+  def categories
+    category = params[:category].to_sym
+    @recipes = Recipe.where(category => params[:id])
+    @type_name = @recipes.first.send(category).name unless @recipes.size == 0
+    render template: "recipes/index"
+  end
+
   # GET /recipes/1
   def show
   end
