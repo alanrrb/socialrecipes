@@ -3,19 +3,19 @@
     <div class="col-md-12">
       <strong class="category-title">Food Type</strong>
       <% @food_types.each do |ft| %>
-        <p><%= check_box_tag :food_type, ft.id %> <%= ft.name %></p>
+        <p><%= ft.name %></p>
       <% end %>
     </div>
     <div class="col-md-12">
       <strong class="category-title">Food Type</strong>
       <% @food_preferences.each do |fp| %>
-        <p><%= check_box_tag :food_preference, fp.id %> <%= fp.name %></p>
+        <p><%= fp.name %></p>
       <% end %>
     </div>
     <div class="col-md-12">
       <strong class="category-title">Food Type</strong>
       <% @cuisines.each do |c| %>
-        <p><%= check_box_tag :cuisine, c.id %> <%= c.name %></p>
+        <p><%= c.name %></p>
       <% end %>
     </div>
   </div>
