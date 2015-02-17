@@ -36,9 +36,13 @@ gem 'bootstrap-sass', '~> 3.3.3'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-group :production do
+group :production, :development do
   gem 'rails_12factor'
   gem 'pg'
+end
+
+group :test do
+  gem 'mysql2'
 end
 
 group :development, :test do
@@ -52,8 +56,6 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
-  gem 'mysql2'
 
   gem 'factory_girl'
 end
