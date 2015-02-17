@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :users
   resources :recipes
+  resources :cuisines
+  resources :food_types
+  resources :food_preferences
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
