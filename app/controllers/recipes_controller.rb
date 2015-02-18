@@ -4,8 +4,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes
   def index
-    @recipes = Recipe.all.limit(20)
-    @most_favorites = Recipe.most_favorites
+    @recipes = Recipe.all
   end
 
   def favorites
