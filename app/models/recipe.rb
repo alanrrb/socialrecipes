@@ -9,6 +9,6 @@ class Recipe < ActiveRecord::Base
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 
   def self.most_favorites
-    joins(:users_who_liked).select("count(*) as num_of_favorites, recipes.*").group("recipes_users.recipe_id").order("1 desc")
+    joins(:users_who_liked).select("count(*) as num_of_favorites, recipes.*").group("recipes_users.recipe_id, recipes.id").order("1 desc")
   end
 end
