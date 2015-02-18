@@ -4,7 +4,15 @@ class RecipesController < ApplicationController
 
   # GET /recipes
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.all.limit(20)
+    @most_favorites = Recipe.most_favorites
+  end
+
+  def favorites
+    user = current_user
+    @recipe = Recipe.find(params[:id])
+    user.favorites << @recipe
+    redirect_to @recipe
   end
 
   def categories

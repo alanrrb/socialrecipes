@@ -40,6 +40,16 @@
           </ul>
         </div>
       </div>
+      <div class="row">
+        <% unless @recipe.users_who_liked && @recipe.users_who_like.include?(current_user) %>
+        <div class="col-md-3">
+          <%= link_to "Favorite it!", "/recipes/#{@recipe.id}/favorites", method: :post %>
+        </div>
+        <% end %>
+        <div class="col-md-3">
+          Send to a friend!
+        </div>
+      </div>
     </div>
   </div>
 </div>

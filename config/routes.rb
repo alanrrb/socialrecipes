@@ -11,5 +11,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  get '/recipes/:category/:id' => "recipes#categories"
+  post '/recipes/:id/favorites' => "recipes#favorites"
+  #just to avoid colisions
+  get  '/recipes/:id/favorites' => "recipes#show"
+  get  '/recipes/:category/:id' => "recipes#categories"
 end
