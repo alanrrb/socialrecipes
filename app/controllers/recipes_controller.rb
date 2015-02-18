@@ -66,9 +66,6 @@ class RecipesController < ApplicationController
   end
 
   def set_relationship
-    @recipe.cuisine = Cuisine.find(recipe_params[:cuisine_id]) if recipe_params[:cuisine_id]
-    @recipe.food_type = FoodType.find(recipe_params[:food_type_id]) if recipe_params[:food_type_id]
-    @recipe.food_preference = FoodPreference.find(recipe_params[:food_preference_id]) if recipe_params[:food_preference_id]
     @recipe.user = current_user
   end
 

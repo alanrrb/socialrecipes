@@ -21,6 +21,7 @@ module Socialrecipes
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.web_console.whitelisted_ips = %w( 127.0.0.1 192.168.10.0/16 )
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
