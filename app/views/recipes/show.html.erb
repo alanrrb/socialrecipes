@@ -10,24 +10,28 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6">
+          <p><strong>Sent by:</strong> <%= @recipe.user.email %></p>
+          <p><strong>Preference:</strong> <%= @recipe.food_preference.name %></p>
+          <p><strong>Cuisine:</strong> <%= @recipe.cuisine.name %></p>
+          <p><strong>Type:</strong> <%= @recipe.food_type.name %></p>
+          <p><strong>Serves:</strong> <%= pluralize(@recipe.serves, "person")%></p>
+          <p><strong>Cooking Time:</strong> <%= @recipe.cooking_time %> minutes</p>
+          <p><strong>Difficulty:</strong> <%= @recipe.difficulty %></p>
+        </div>
+        <div class="col-md-6">
+          <%= image_tag @recipe.photo.url(:medium), class: "image-responsive" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
           <p><strong>Ingredients:</strong></p>
           <ul>
             <% @recipe.ingredients.split("\r\n").split do |step| %>
               <li><%= step %></li>
-          <% end %>
+            <% end %>
           </ul>
         </div>
         <div class="col-md-6">
-          <p><strong>Preference:</strong> <%= @recipe.food_preference.name %></p>
-          <p><strong>Cuisine:</strong> <%= @recipe.cuisine.name %></p>
-          <p><strong>Type:</strong> <%= @recipe.food_type.name %></p>
-          <p><strong>Serves:</strong> <%= @recipe.serves %></p>
-          <p><strong>Cooking Time:</strong> <%= @recipe.cooking_time %></p>
-          <p><strong>Difficulty:</strong> <%= @recipe.difficulty %></p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
           <p><strong>Procedure</strong></p>
           <ul>
             <% @recipe.procedure.split("\r\n").split do |step| %>
@@ -43,4 +47,4 @@
 <% if user_signed_in? %>
   <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <% end %>
-<%= link_to 'Back', recipes_path %>
+<%= link_to '<< More recipes', recipes_path %>
