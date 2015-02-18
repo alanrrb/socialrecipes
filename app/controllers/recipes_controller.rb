@@ -1,10 +1,16 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :favorites]
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy, :favorites]
 
   # GET /recipes
   def index
     @recipes = Recipe.all
+  end
+
+  def favorites
+    user = current_user
+    user.favorites << @recipe
+    redirect_to @recipe
   end
 
   def categories

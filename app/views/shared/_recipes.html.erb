@@ -1,19 +1,12 @@
+<div class="col-md-6">
+  <h3>Last Recipes</h3>
 <% recipes.each do |recipe| %>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= link_to recipe.name, recipe%></h3>
-  </div>
-  <div class="panel-body">
-    <%= image_tag recipe.photo.url(:thumb), class: "image-responsive" %>
-    <p>
-      <strong>Cooking Time: </strong><%= recipe.cooking_time %> minutes
-      <strong>Serves: </strong> <%= pluralize(recipe.serves, "person")%>
-    </p>
-    <p>
-      <strong>Food Type: </strong><%= recipe.food_type.name %>
-      <strong>Food Preference: </strong><%= recipe.food_preference.name %>
-      <strong>Cuisine: </strong><%= recipe.cuisine.name %>
-    </p>
-  </div>
-</div>
+  <%= render partial: "shared/recipe_in_a_list", locals: {recipe: recipe} %>
 <% end %>
+</div>
+<div class="col-md-6">
+  <h3>Most favorites</h3>
+<% most_favorites.each do |recipe| %>
+  <%= render partial: "shared/recipe_in_a_list", locals: {recipe: recipe} %>
+<% end %>
+</div>

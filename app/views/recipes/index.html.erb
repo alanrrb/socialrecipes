@@ -1,2 +1,2 @@
 <h2><%= "#{@type_name.capitalize}" if @type_name %> Recipes </h2>
-<%= render partial: "shared/recipes", locals: {recipes: @recipes} %>
+<%= render partial: "shared/recipe_in_a_list", collection: @recipes, as: :recipe %>
