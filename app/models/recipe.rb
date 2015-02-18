@@ -1,5 +1,6 @@
 class Recipe < ActiveRecord::Base
   validates_presence_of :name, :cuisine, :food_type, :food_preference, :ingredients, :procedure
+  has_and_belongs_to_many :users_who_like, class_name: "User"
   belongs_to :food_preference
   belongs_to :food_type
   belongs_to :cuisine
