@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3>Profile of <%= @user.name %></h3>
+    <p><%= link_to @user.email, @user.email %></p>
+    <p><%= @user.city%></p>
+    <%= link_to "Facebook", "http://facebook.com/#{@user.facebook}" %> <%= link_to "Twitter", "http://twitter.com/#{@user.twitter}" %>
+    <h4><%= @user.name %>'s recipes</h4>
+    <% @recipes.each_with_index do |recipe, index| %>
+      <% if index % 2 == 0 %>
+      <div class="row">
+        <div class="col-md-6">
+      <% else %>
+        <div class="col-md-6">
+      <% end %>
+          <div class="row">
+            <div class="col-md-3">
+              <%= image_tag recipe.photo.url(:thumb), class: "image-responsive" %>
+            </div>
+            <div class="col-md-9">
+              <h5><%= link_to recipe.name, recipe%></h5>
+              <p><strong>Preference:</strong> <%= recipe.food_preference.name %></p>
+              <p><strong>Cuisine:</strong> <%= recipe.cuisine.name %></p>
+              <p><strong>Type:</strong> <%= recipe.food_type.name %></p>
+              <p><strong>Difficulty:</strong> <%= recipe.difficulty %></p>
+            </div>
+          </div>
+      <% if index % 2 == 0 %>
+        </div>
+      <% else %>
+        </div>
+      </div>
+      <% end %>
+      <% if index % 2 == 0 && index == @recipes.count - 1 %>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

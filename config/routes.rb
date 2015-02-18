@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :food_types
   resources :food_preferences
 
+  get '/users/:id' => "users#show"
+
   root 'home#index'
 
   get '/recipes/:category/:id' => "recipes#categories"

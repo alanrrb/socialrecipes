@@ -10,7 +10,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6">
-          <p><strong>Sent by:</strong> <%= @recipe.user.email %></p>
+          <p><strong>Sent by:</strong> <%= link_to @recipe.user.name, "/users/#{@recipe.user.id}" %></p>
           <p><strong>Preference:</strong> <%= @recipe.food_preference.name %></p>
           <p><strong>Cuisine:</strong> <%= @recipe.cuisine.name %></p>
           <p><strong>Type:</strong> <%= @recipe.food_type.name %></p>
