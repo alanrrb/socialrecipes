@@ -54,7 +54,7 @@
   </div>
 </div>
 
-<% if user_signed_in? %>
+<% if user_signed_in? && current_user == @recipe.user %>
   <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <% end %>
 <%= link_to '<< More recipes', recipes_path %>

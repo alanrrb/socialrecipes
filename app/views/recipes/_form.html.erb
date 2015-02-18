@@ -11,47 +11,47 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :serves %><br>
-    <%= f.number_field :serves %>
+    <%= f.number_field :serves, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :food_preference %><br>
-    <%= f.collection_select(:food_preference_id, FoodPreference.all, :id, :name, prompt: "Selecione") %>
+    <%= f.collection_select(:food_preference_id, FoodPreference.all, :id, :name, {prompt: "Selecione"}, class: "form-control") %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :food_type %><br>
-    <%= f.collection_select(:food_type_id, FoodType.all, :id, :name, prompt: "Selecione") %>
+    <%= f.collection_select(:food_type_id, FoodType.all, :id, :name, {prompt: "Selecione"}, class: "form-control") %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :cuisine %><br>
-    <%= f.collection_select(:cuisine_id, Cuisine.all, :id, :name, prompt: "Selecione") %>
+    <%= f.collection_select(:cuisine_id, Cuisine.all, :id, :name, {prompt: "Selecione"}, class: "form-control") %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :cooking_time %><br>
-    <%= f.number_field :cooking_time %>
+    <%= f.number_field :cooking_time, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :difficulty %><br>
-    <%= f.text_field :difficulty %>
+    <%= f.text_field :difficulty, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :ingredients %><br>
-    <%= f.text_area :ingredients %>
+    <%= f.text_area :ingredients, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :procedure %><br>
-    <%= f.text_area :procedure %>
+    <%= f.text_area :procedure, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :photo %><br>
-    <%= f.file_field :photo %>
+    <%= f.file_field :photo, class: "form-control" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-default" %>
   </div>
 <% end %>
