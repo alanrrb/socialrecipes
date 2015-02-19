@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :favorites]
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy, :favorites]
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy, :favorites, :friend_recipe]
 
   # GET /recipes
   def index
@@ -57,6 +57,14 @@ class RecipesController < ApplicationController
   def destroy
     @recipe.destroy
     redirect_to recipes_url, notice: 'Recipe was successfully destroyed.'
+  end
+
+  def friend_recipe
+    user = current_user
+    email = params[:email]
+    message = params[:message]
+    FriendMailer.recipe_mail(email, user, @recipe, message).deliver
+    render :nothing => true
   end
 
   private

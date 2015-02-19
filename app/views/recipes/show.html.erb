@@ -26,7 +26,7 @@
         <div class="col-md-6">
           <p><strong>Ingredients:</strong></p>
           <ul>
-            <% @recipe.ingredients.split("\r\n").split do |step| %>
+            <% @recipe.ingredients.split("\r\n").each do |step| %>
               <li><%= step %></li>
             <% end %>
           </ul>
@@ -34,7 +34,7 @@
         <div class="col-md-6">
           <p><strong>Procedure</strong></p>
           <ul>
-            <% @recipe.procedure.split("\r\n").split do |step| %>
+            <% @recipe.procedure.split("\r\n").each do |step| %>
               <li><%= step %></li>
             <% end %>
           </ul>
@@ -47,7 +47,35 @@
         </div>
         <% end %>
         <div class="col-md-3">
-          Send to a friend!
+          <a href="#" data-toggle="modal" data-target="#exampleModal">Send to a friend!</a>
+
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="recipient-name" class="control-label">Recipient:</label>
+                      <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                      <label for="message-text" class="control-label">Message:</label>
+                      <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                    <input type="hidden" id="recipe-id" value="<%= @recipe.id %>">
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal" id="close-btn">Close</button>
+                  <button type="button" class="btn btn-primary" id="send-email-btn">Send message</button>
+                </div>
+              </div>
+            </div>
+          </div><!-- fim modal email -->
         </div>
       </div>
     </div>

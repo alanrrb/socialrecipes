@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
 
+  post '/recipes/friend_recipe' => "recipes#friend_recipe"
   resources :recipes
   resources :cuisines
   resources :food_types
