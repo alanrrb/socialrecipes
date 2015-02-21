@@ -16,6 +16,7 @@ RSpec.describe "recipes/edit", type: :view do
   end
 
   it "renders the edit recipe form" do
+    pending
     render
 
     assert_select "form[action=?][method=?]", recipe_path(@recipe), "post" do
