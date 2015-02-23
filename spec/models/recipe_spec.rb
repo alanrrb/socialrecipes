@@ -24,6 +24,7 @@ RSpec.describe Recipe, type: :model do
       expect(recipe.users_who_liked.size).to eq(2)
       expect(recipe.users_who_liked).to include(user1)
       expect(recipe.users_who_liked).to include(user2)
+      expect(recipe.users_who_liked).to contain_exactly(user1, user2)
     end
 
     it "should return a ordered list of most favorites recipes" do

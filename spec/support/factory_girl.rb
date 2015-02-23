@@ -10,18 +10,29 @@ FactoryGirl.define do
     email "test@test.com"
     password "12345678"
     password_confirmation "12345678"
+    name "user"
+    city "new york"
   end
 
   factory :user1, class: "User" do
     email "user1@test.com"
     password "12345678"
     password_confirmation "12345678"
+    name "user"
+    city "new york"
   end
 
   factory :user2, class: "User" do
     email "user2@test.com"
     password "12345678"
     password_confirmation "12345678"
+    name "user"
+    city "new york"
+  end
+
+  factory :admin do
+    email "admin@test.com"
+    password "12345678"
   end
 
   factory :recipe_cake, class: "Recipe" do
@@ -31,7 +42,7 @@ FactoryGirl.define do
     food_preference
     ingredients "açucar\nsal\nfarinha de trigo"
     procedure "cozinhe por 10 min\nsirva"
-    user
+    association :user, email: "recipe_cake@test.com"
   end
 
   factory :recipe do
@@ -41,7 +52,7 @@ FactoryGirl.define do
     food_preference
     ingredients "açucar\nsal\nfarinha de trigo"
     procedure "cozinhe por 10 min\nsirva"
-    association :user, email: "recipe@test.com"
+    #association :user, email: "recipe@test.com"
   end
 
   factory :cuisine do

@@ -57,5 +57,9 @@ group :development, :test do
   gem 'spring'
 
   gem 'factory_girl'
+
+  gem 'awesome_print'
+
+  gem 'pry'
 end
 
